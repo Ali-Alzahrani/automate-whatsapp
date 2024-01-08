@@ -1,5 +1,6 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
@@ -7,10 +8,10 @@ app = Flask(__name__)
 def reply():
     
     
-    #print("Received a message!")  # Check if this message appears in the Heroku logs
+    print("Received a message!")  # Check if this message appears in the Heroku logs
     response = MessagingResponse()
     response.message("Hello4")
-    #print(str(response))  # Check the response being generated
+    print(str(response))  # Check the response being generated
     return str(response)
     
 
