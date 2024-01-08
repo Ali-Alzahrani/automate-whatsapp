@@ -28,7 +28,7 @@ def reply():
 
     users.update_one({"number": number}, {"$push": {"messages": {"text": text, "date": datetime.now()}}})
     
-    return str(response)
+    return str(res)
     
     #print("Received a message!")  # Check if this message appears in the Heroku logs
     #response = MessagingResponse()
