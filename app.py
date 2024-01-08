@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def reply():
-    return("Go")
+    return str("Go")
     
     #print("Received a message!")  # Check if this message appears in the Heroku logs
     #response = MessagingResponse()
