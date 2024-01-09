@@ -27,6 +27,7 @@ def reply():
     else:
         res.message("i don't know what to say")
 
+    # Always update the user's data by adding his new message to the array
     users.update_one({"number": number}, {"$push": {"messages": {"text": text, "date": datetime.now()}}})
     
     return str(res)
