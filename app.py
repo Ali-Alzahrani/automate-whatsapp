@@ -22,10 +22,31 @@ def reply():
     if bool(user) == False:
         # The user is new
         res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2 to order \n 3 hours \n 4 address")
-        # Add this new usesr to the db
+        # Add this new usesr to the db (his number, status, and an empty array to store his coming messages)
         users.insert_one({"number": number, "status": "main", "messages": []})
-    else:
-        res.message("i don't know what to say")
+    elif user["status"] == "main":
+        try:
+            option = int(text)
+        except:
+            res.message("Please enter a valid response")
+            return str(res)
+
+        if option == 1:
+            res.message("Here is number 1")
+        elif option == 2:
+            res.message("You have entered the ordering mode")
+            user.update_one({"number": number}, {"$set": {"status": "ordering"}})
+            res.message("1 for Mg \n 2 for Changan")
+        elif option == 3:
+            res.message("Here is nubmer 3")
+        elif option == 4:
+            res.message("Here is number 4")
+        else:
+            res.message("Please enter a valid response")
+            return str(res)
+            
+        
+        
 
     # Always update the user's data by adding his new message to the array
     users.update_one({"number": number}, {"$push": {"messages": {"text": text, "date": datetime.now()}}})
