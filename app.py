@@ -21,7 +21,7 @@ def reply():
 
     if bool(user) == False:
         # The user is new
-        res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2 to order \n 3 hours \n 4 address")
+        res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2️⃣ to order \n 3️⃣ hours \n 4️⃣ address")
         # Add this new usesr to the db (his number, status, and an empty array to store his coming messages)
         users.insert_one({"number": number, "status": "main", "messages": []})
     elif user["status"] == "main":
@@ -71,6 +71,12 @@ def reply():
         res.message("Thanks for shopping with us")
         res.message(f"Your order for {selected} has been received")
         orders.insert_one({"number": number, "item": selected, "address": text, "date": datetime.now()})
+        users.update_one({"number": number}, {"$set": {"status": "ordered"}})
+
+    elif user["status"] == "ordered":
+        res.message("Hi AGAIN in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2️⃣ to order \n 3️⃣ hours \n 4️⃣ address")
+        users.update_one({"number": number}, {"$set": {"status": "main"}})
+        
         
             
         
