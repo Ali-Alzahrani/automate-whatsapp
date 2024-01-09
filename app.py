@@ -67,9 +67,9 @@ def reply():
             res.message("Please enter a valid nubmer between 1 and 4")
             
     elif user["status"] == "address":
-        #selected = user["item"]
+        selected = user["item"]
         res.message("Thanks for shopping with us")
-        #res.message(f"Your order for {selected} has been received")
+        res.message(f"Your order for {selected} has been received")
         #orders.insert_one({"number": number}, {"item": selected}, {"address": text}, {"date": datetime.now()})
         
             
