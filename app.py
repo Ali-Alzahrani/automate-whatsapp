@@ -12,21 +12,24 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def reply():
-    text = request.form.get("Body")
-    number = request.form.get("From")
-    number = number.replace("whatsapp:", "")
+    text = request.form.get("Body")   # The text sent by the user
+    number = request.form.get("From")    # The mobile nubmer of the user who is texting
     res = MessagingResponse()
-    user = users.find_one({"number": number})
+    msg = res.message(f"Thanks for sending '{text}' from {nubmer}'
+    
+    #number = number.replace("whatsapp:", "")
+    #res = MessagingResponse()
+    #user = users.find_one({"number": number})
 
-    if bool(user) == False:
+    #if bool(user) == False:
         # The user is new
-        res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2 to order \n 3 hours \n 4 address")
+        #res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2 to order \n 3 hours \n 4 address")
         # Add this new usesr to the db
-        users.insert_one({"number": number, "status": "main", "messages": []})
-    else:
-        res.message("i don't know what to say")
+        #users.insert_one({"number": number, "status": "main", "messages": []})
+    #else:
+        #res.message("i don't know what to say")
 
-    users.update_one({"number": number}, {"$push": {"messages": {"text": text, "date": datetime.now()}}})
+    #users.update_one({"number": number}, {"$push": {"messages": {"text": text, "date": datetime.now()}}})
     
     return str(res)
     
