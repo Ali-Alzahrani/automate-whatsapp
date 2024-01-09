@@ -58,15 +58,20 @@ def reply():
         elif 1 <= option <= 4:
             car_type = ["Mg", "Changan", "Haval", "Great wall"]
             selected = car_type[option - 1]
-            users.update_one({"number": number}, {"$set": {"status": "choosing_type"}})
+            users.update_one({"number": number}, {"$set": {"status": "address"}})
             users.update_one({"number": number}, {"$set": {"item": selected}})
 
-            res.message("Your order has been placed, please enter your address 😎")
+            res.message("Your order has been placed, please enter your address 📍")
 
         else:
             res.message("Please enter a valid nubmer between 1 and 4")
             
-            
+    elif user["status"] == "address":
+        selected = user["item"]
+        res.message("Thanks for shopping with us")
+        res.message(f"Your order for {selected} has been received")
+        orders.insert_one({"number": number}, {"item": selected}, {"address": text}, {"date": datetime.now()})
+        
             
         
 
