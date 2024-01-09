@@ -36,7 +36,7 @@ def reply():
         elif option == 2:
             res.message("You have entered the ordering mode")
             users.update_one({"number": number}, {"$set": {"status": "ordering"}})
-            res.message("0 to go to the main menu \n 1 for Mg \n 2 for Changan")
+            res.message("0 to go to the main menu \n 1 for Mg \n 2 for Changan \n 3 for Haval \n 4 for Great wall")
         elif option == 3:
             res.message("Here is nubmer 3")
         elif option == 4:
@@ -55,6 +55,19 @@ def reply():
         if option == 0:
             users.update_one({"number": number}, {"$set": {"status": "main"}})
             res.message("Choose from:" "\n 1️⃣ to contact us \n 2 to order \n 3 hours \n 4 address")
+        elif 1 <= option <= 4:
+            car_type = ["Mg", "Changan", "Haval", "Great wall"]
+            selected = car_type[option - 1]
+            users.update_one({"number": number}, {"$set": {"status": "choosing_type"}})
+            users.update_one({"number": number}, {"$set": {"item": selected}})
+
+            res.message("Your order has been placed, please enter your address 😎")
+
+        else:
+            res.message("Please enter a valid nubmer between 1 and 4")
+            
+            
+            
         
 
     # Always update the user's data by adding his new message to the array
