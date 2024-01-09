@@ -15,7 +15,7 @@ def reply():
     text = request.form.get("Body")   # The text sent by the user
     number = request.form.get("From")    # The mobile nubmer of the user who is texting
     res = MessagingResponse()
-    msg = res.message(f"Thanks for sending '{text}' from {nubmer}'
+    msg = res.message(f"Thanks for sending '{text}' from {nubmer}")
     
     #number = number.replace("whatsapp:", "")
     #res = MessagingResponse()
