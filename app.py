@@ -35,7 +35,7 @@ def reply():
             res.message("Here is number 1")
         elif option == 2:
             res.message("You have entered the ordering mode")
-            user.update_one({"number": number}, {"$set": {"status": "ordering"}})
+            users.update_one({"number": number}, {"$set": {"status": "ordering"}})
             res.message("1 for Mg \n 2 for Changan")
         elif option == 3:
             res.message("Here is nubmer 3")
