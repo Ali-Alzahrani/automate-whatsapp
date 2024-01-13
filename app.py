@@ -36,7 +36,8 @@ def reply():
             res.message("الرجاء تحديد نوع السياره: \n 1️⃣ ام جي \n 2️⃣ تشانجان \n 3️⃣ هافال \n 4️⃣ ماكسوس \n \n 0️⃣ للعوده للقائمه الرئيسيه")
             
         elif option == 2:
-            res.location(21.257466850773422, 40.452543153477315)
+            map_link = "https://www.google.com/maps?q=21.257466850773422, 40.452543153477315"
+            res.message(f"موقعنا على الخريطة: {map_link}")
             
         elif option == 3:
             res.message("Here is nubmer 3")
