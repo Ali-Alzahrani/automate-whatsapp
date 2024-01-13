@@ -42,7 +42,7 @@ def reply():
             res.message(f"موقعنا على الخريطة: {map_link}")
             
         elif option == 3:
-            res.message("Here is nubmer 3")
+            res.message("من السبت الى الخميس \n الفتره الصباحيه (٩ صباحا - ١ ظهرا) \n الفتره المسائيه (٤ مساءا - ٩ مساءا)")
         elif option == 4:
             res.message("Here is number 4")
         else:
