@@ -21,7 +21,7 @@ def reply():
 
     if bool(user) == False:
         # The user is new
-        res.message("Hi in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2️⃣ to order \n 3️⃣ hours \n 4️⃣ address")
+        res.message("مرحبا بك في *الابداع الصيني لقطع الغيار* الرجاء ادخال الرقم المناسب" "\n 1️⃣ للطلب والتوصيل \n 2️⃣ لموقعنا على قوقل ماب \n 3️⃣ لساعات العمل \n 4️⃣ للتحدث الى احد الموظفين")
         # Add this new usesr to the db (his number, status, and an empty array to store his coming messages)
         users.insert_one({"number": number, "status": "main", "messages": []})
     elif user["status"] == "main":
