@@ -65,7 +65,7 @@ def reply():
             users.update_one({"number": number}, {"$set": {"status": "main"}})
             res.message("مرحبا بك مره اخرى في *الابداع الصيني لقطع الغيار* الرجاء ادخال الرقم المناسب" "\n 1️⃣ للطلب والتوصيل \n 2️⃣ لموقعنا على قوقل ماب \n 3️⃣ لساعات العمل \n 4️⃣ للتحدث الى احد الموظفين")
         elif 1 <= option <= 6:
-            car_type = ["Mg", "Changan", "Haval","Maxus", "Geley", "Great wall"]
+            car_type = ["ام جي", "تشانجان", "هافال","ماكسوي", "جلي", "قريت وول"]
             selected = car_type[option - 1]
             users.update_one({"number": number}, {"$set": {"status": "address"}})
             users.update_one({"number": number}, {"$set": {"item": selected}})
@@ -78,8 +78,8 @@ def reply():
     # ----------------- (Address) status ----------------#
     elif user["status"] == "address":
         selected = user["item"]
-        res.message("Thanks for shopping with us")
-        res.message(f"Your order for {selected} has been received")
+        res.message("شكرا لطلبكم من الابداع الصيني")
+        res.message(f"تم استلام طلباتكم لقطع غيار السياره من نوع *{selected}* وسيقوم الموظف بالتواصل معكم حالا \n الرجاء الانتظار ⏳")
         orders.insert_one({"number": number, "item": selected, "address": text, "date": datetime.now()})
         users.update_one({"number": number}, {"$set": {"status": "ordered"}})
 
