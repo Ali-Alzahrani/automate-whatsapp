@@ -19,11 +19,14 @@ def reply():
     res = MessagingResponse()
     user = users.find_one({"number": number})
 
+    # ------------------- New user ------------------#
     if bool(user) == False:
         # The user is new
         res.message("مرحبا بك في *الابداع الصيني لقطع الغيار* الرجاء ادخال الرقم المناسب" "\n 1️⃣ للطلب والتوصيل \n 2️⃣ لموقعنا على قوقل ماب \n 3️⃣ لساعات العمل \n 4️⃣ للتحدث الى احد الموظفين")
         # Add this new usesr to the db (his number, status, and an empty array to store his coming messages)
         users.insert_one({"number": number, "status": "main", "messages": []})
+
+    # ------------------- (Main) status -------------#
     elif user["status"] == "main":
         try:
             option = int(text)
@@ -37,12 +40,12 @@ def reply():
             
         elif option == 2:
             # The coordinates are (21.257466850773422, 40.452543153477315) we replaced the comma with %2C
-            
             map_link = "https://www.google.com/maps?q=21.257466850773422%2C40.452543153477315"
             res.message(f"موقعنا على الخريطة: {map_link}")
             
         elif option == 3:
             res.message("من السبت الى الخميس \n الفتره الصباحيه (٩ صباحا - ١ ظهرا) \n الفتره المسائيه (٤ مساءا - ٩ مساءا)")
+            
         elif option == 4:
             res.message("الرجاء الانتظار وسيقوم احد موظفينا بالرد عليكم 😎")
             
@@ -50,6 +53,7 @@ def reply():
             res.message("Please enter a valid response")
             #return str(res)
 
+    # -------------- (Ordering) status ---------------#
     elif user["status"] == "ordering":
         try:
             option = int(text)
@@ -70,7 +74,8 @@ def reply():
 
         else:
             res.message("Please enter a valid nubmer between 1 and 4")
-            
+
+    # ----------------- (Address) status ----------------#
     elif user["status"] == "address":
         selected = user["item"]
         res.message("Thanks for shopping with us")
@@ -78,6 +83,7 @@ def reply():
         orders.insert_one({"number": number, "item": selected, "address": text, "date": datetime.now()})
         users.update_one({"number": number}, {"$set": {"status": "ordered"}})
 
+    # ----------------- (Ordered) status ----------------#
     elif user["status"] == "ordered":
         res.message("؟؟؟")
         users.update_one({"number": number}, {"$set": {"status": "main"}})
