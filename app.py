@@ -70,7 +70,7 @@ def reply():
             users.update_one({"number": number}, {"$set": {"status": "address"}})
             users.update_one({"number": number}, {"$set": {"item": selected}})
 
-            res.message("Your order has been placed, please enter your address 📍")
+            res.message("الرجاء ارسال صوره الاستماره او رقم الهيكل و القطع المطلوبه")
 
         else:
             res.message("Please enter a valid nubmer between 1 and 4")
