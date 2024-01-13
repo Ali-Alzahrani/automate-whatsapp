@@ -79,7 +79,7 @@ def reply():
     elif user["status"] == "address":
         selected = user["item"]
         res.message("شكرا لطلبكم من الابداع الصيني")
-        res.message(f"تم استلام طلباتكم لقطع غيار السياره من نوع *{selected}* وسيقوم الموظف بالتواصل معكم حالا \n الرجاء الانتظار ⏳")
+        res.message(f"تم استلام طلباتكم لقطع غيار السياره من نوع *({selected})* وسيقوم الموظف بالتواصل معكم في اقرب وقت. \n الرجاء الانتظار ⏳")
         orders.insert_one({"number": number, "item": selected, "address": text, "date": datetime.now()})
         users.update_one({"number": number}, {"$set": {"status": "ordered"}})
 
