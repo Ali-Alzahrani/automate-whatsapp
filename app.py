@@ -44,7 +44,8 @@ def reply():
         elif option == 3:
             res.message("من السبت الى الخميس \n الفتره الصباحيه (٩ صباحا - ١ ظهرا) \n الفتره المسائيه (٤ مساءا - ٩ مساءا)")
         elif option == 4:
-            res.message("Here is number 4")
+            res.message("الرجاء الانتظار وسيقوم احد موظفينا بالرد عليكم 😎")
+            
         else:
             res.message("Please enter a valid response")
             #return str(res)
