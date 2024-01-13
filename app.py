@@ -10,6 +10,11 @@ orders = db["orders"]
 
 app = Flask(__name__)
 
+def get_saudi_time():
+    saudi_timezone = pytz.timezone("Asia/Riyadh")
+    saudi_time = datetime.now(saudi_timezone)
+    return saudi_time.strftime("%A, %d %B %Y %H:%M:%S %p")
+
 @app.route("/", methods=["GET", "POST"])
 def reply():
     text = request.form.get("Body")   # The text sent by the user
@@ -44,7 +49,10 @@ def reply():
             res.message(f"موقعنا على الخريطة: {map_link}")
             
         elif option == 3:
-            res.message("من السبت الى الخميس من الساعه ٨ صباحا الى ٨ مساءا ⏰")
+            #res.message("من السبت الى الخميس من الساعه ٨ صباحا الى ٨ مساءا ⏰")
+            saudi_time = get_saudi_time()
+            res.message(f"الوقت الحالي في المملكة العربية السعودية: {saudi_time}")
+
             
         elif option == 4:
             res.message("الرجاء الانتظار وسيقوم احد موظفينا بالرد عليكم 😎")
