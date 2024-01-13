@@ -14,7 +14,7 @@ app = Flask(__name__)
 def get_saudi_time():
     saudi_timezone = pytz.timezone("Asia/Riyadh")
     saudi_time = datetime.now(saudi_timezone)
-    return saudi_time.strftime("%A, %d %B %Y %H:%M:%S %p")
+    return saudi_time
 
 @app.route("/", methods=["GET", "POST"])
 def reply():
@@ -51,7 +51,7 @@ def reply():
             
         elif option == 3:
             #res.message("من السبت الى الخميس من الساعه ٨ صباحا الى ٨ مساءا ⏰")
-            saudi_time = get_saudi_time()
+            saudi_time = get_saudi_time().strftime("%A, %d %B %Y %H:%M:%S %p")
             res.message(f"الوقت الحالي في المملكة العربية السعودية: {saudi_time}")
 
             
