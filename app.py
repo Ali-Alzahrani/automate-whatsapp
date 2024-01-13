@@ -36,7 +36,7 @@ def reply():
 
         if option == 1:
             users.update_one({"number": number}, {"$set": {"status": "ordering"}})
-            res.message("الرجاء تحديد نوع السياره: \n 1️⃣ ام جي \n 2️⃣ تشانجان \n 3️⃣ هافال \n 4️⃣ ماكسوس \n \n 0️⃣ للعوده للقائمه الرئيسيه")
+            res.message("الرجاء تحديد نوع السياره: \n 1️⃣ ام جي \n 2️⃣ تشانجان \n 3️⃣ هافال \n 4️⃣ ماكسوس \n 5️⃣ جيلي \n 6️⃣ جريت وول \n \n 0️⃣ للعوده للقائمه الرئيسيه")
             
         elif option == 2:
             # The coordinates are (21.257466850773422, 40.452543153477315) we replaced the comma with %2C
