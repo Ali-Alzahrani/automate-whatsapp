@@ -87,6 +87,7 @@ def reply():
     # ----------------- (Address) status ----------------#
     elif user["status"] == "address":
         selected = user["item"]
+        saudi_time = get_saudi_time()
 
         # Check if it's a non-working time (Friday or 8 PM to 8 AM)
         if saudi_time.strftime("%A") == "Friday" or saudi_time.hour < 8 or saudi_time.hour >= 20:
