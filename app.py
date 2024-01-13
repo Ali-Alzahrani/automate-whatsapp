@@ -79,7 +79,7 @@ def reply():
         users.update_one({"number": number}, {"$set": {"status": "ordered"}})
 
     elif user["status"] == "ordered":
-        res.message("Hi AGAIN in *China*. \n Choose from:" "\n 1️⃣ to contact us \n 2️⃣ to order \n 3️⃣ hours \n 4️⃣ address")
+        res.message("مرحبا بك مره اخرى في *الابداع الصيني لقطع الغيار* الرجاء ادخال الرقم المناسب" "\n 1️⃣ للطلب والتوصيل \n 2️⃣ لموقعنا على قوقل ماب \n 3️⃣ لساعات العمل \n 4️⃣ للتحدث الى احد الموظفين")
         users.update_one({"number": number}, {"$set": {"status": "main"}})
         
         
