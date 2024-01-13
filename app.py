@@ -32,11 +32,12 @@ def reply():
             return str(res)
 
         if option == 1:
-            res.message("Here is number 1")
-        elif option == 2:
-            res.message("You have entered the ordering mode")
             users.update_one({"number": number}, {"$set": {"status": "ordering"}})
-            res.message("0 to go to the main menu \n 1 for Mg \n 2 for Changan \n 3 for Haval \n 4 for Great wall")
+            res.message("الرجاء تحديد نوع السياره: \n 1️⃣ ام جي \n 2️⃣ تشانجان \n 3️⃣ هافال \n 4️⃣ ماكسوس \n \n 0️⃣ للعوده للقائمه الرئيسيه")
+            
+        elif option == 2:
+            res.message("Here is number 2")
+            
         elif option == 3:
             res.message("Here is nubmer 3")
         elif option == 4:
